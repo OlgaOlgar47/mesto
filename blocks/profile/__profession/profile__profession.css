@@ -1,0 +1,14 @@
+.profile__profession {
+  font-size: 18px;
+  line-height: 21.78px;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media screen and (max-width: 568px) {
+  .profile__profession {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
