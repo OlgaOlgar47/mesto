@@ -29,10 +29,11 @@
 @import url(../blocks/elements/__text/elements__text.css);
 @import url(../blocks/elements/__item/elements__item.css);
 @import url(../blocks/elements/__bottom-block/elements__bottom-block.css);
-@import url(../blocks/elements/__like-button/_active/elements__like-button-active.css);
+
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);

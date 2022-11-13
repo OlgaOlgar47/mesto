@@ -9,7 +9,7 @@
   background-position: center;
   cursor: pointer;
   align-self: center;
-  transition: .3 ease;
+  transition: .3s ease;
 }
 
 @media screen and (max-width: 1034px) {
