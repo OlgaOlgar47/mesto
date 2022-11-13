@@ -40,7 +40,7 @@ function formSubmitHandler (evt) {
   profileNameElement.textContent = nameInput.value;
   profileProfessionElement.textContent = jobInput.value;
 
-  closePopup;
+  closePopup();
 }
 
 // Прикрепляем обработчик к форме:
