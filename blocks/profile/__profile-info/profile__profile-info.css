@@ -4,8 +4,16 @@
     column-gap: 18px;
 }
 
+@media screen and (max-width: 1024px) {
+    .profile__profile-info {
+        text-align: center;
+    }
+    
+}
+
 @media screen and (max-width: 568px) {
     .profile__profile-info {
+        max-width: 282px;
         display: grid;
         grid-template-columns: 1fr 18px;
         column-gap: 10px;

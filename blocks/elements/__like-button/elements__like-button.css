@@ -5,4 +5,12 @@
   background-position: center;
   background-repeat: no-repeat;
   border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: .3 ease;
 }
+
+.elements__like-button:hover {
+  opacity: .5;
+}
+

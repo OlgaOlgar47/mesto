@@ -17,7 +17,7 @@
       <div class="profile__card">
         <img class="profile__avatar" src="./images/image.jpg" alt="Аватарка">
         <div class="profile__profile-info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1><button class="profile profile__editbutton"></button>
+          <h1 class="profile__name">Жак-Ив Кусто</h1><button class="profile__edit-button"></button>
           <h2 class="profile__profession">Исследователь океана</h2>
         </div>
       </div>
@@ -57,7 +57,20 @@
       </ul>
     </section>
   </main>
-  
-    
+  <footer class="footer">
+    <p class="footer__copyright">&copy;&nbsp;2022 Mesto Russia</p>
+  </footer>
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close"></button>
+      <fieldset class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" name="name" placeholder="Жак Ив Кусто" class="popup__input">
+        <input type="text" name="profession" placeholder="Исследователь океана" class="popup__input">
+        <button type="submit" class="popup__submit">Сохранить</button>
+      </fieldset>
+    </div>
+  </section>
+<script src="./scripts/index.js"></script>
 </body>
 </html>
