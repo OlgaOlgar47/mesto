@@ -1,77 +1,99 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
-</head>
-<body class="page">
-  <header class="header page__header">
-    <img class="header__logo" src="./images/logo.svg" alt="логотип Место">
-    <img class="header__line" src="./images/Line.png" alt="линия">
-  </header>
-  <main class="content page__content">
-    <section class="profile content__profile">
-      <div class="profile__card">
-        <img class="profile__avatar" src="./images/image.jpg" alt="Аватарка">
-        <div class="profile__profile-info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1><button class="profile__edit-button" type="button"></button>
-          <h2 class="profile__profession">Исследователь океана</h2>
+  </head>
+  <body class="page">
+    <header class="header page__header">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип Место">
+    </header>
+    <main class="content page__content">
+      <section class="profile content__profile">
+        <div class="profile__card">
+          <img class="profile__avatar" src="./images/image_50.jpg" alt="Аватарка">
+          <div class="profile__profile-info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактирование данных"></button>
+            <p class="profile__profession">Исследователь океана</p>
+          </div>
         </div>
-      </div>
-      <button class="profile__add-button" type="button"></button>
-    </section>
-    <section class="elements" aria-label="Сетка фотографий">
-      <ul class="elements__list">
-        <li class="elements__item">
-          <img class="elements__image" src="./images/1.jpg" alt="горы и снег">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Уральский урал ура</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__image" src="./images/2.jpg" alt="горы и небо">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Кавказ</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__image" src="./images/3.jpg" alt="пальма">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Сочи</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__image" src="./images/4.jpg" alt="озеро">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Озеро</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__image" src="./images/5.jpg" alt="бабочка и сирень">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Сирень</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__image" src="./images/6.jpg" alt="сибирская ель">
-          <div class="elements__bottom-block">
-          <p class="elements__text">Сибирская ель</p><button class="elements__like-button" type="button"></button></div>
-        </li>
-      </ul>
-    </section>
-  </main>
-  <footer class="footer">
-    <p class="footer__copyright">&copy;&nbsp;2022 Mesto Russia</p>
-  </footer>
-  <section class="popup">
-    <form class="popup__container">
-      <button class="popup__close" type="button"></button>
-      <fieldset class="popup__content">
+        <button class="profile__add-button" type="button" aria-label="Добавить картинку"></button>
+      </section>
+      <section class="elements" aria-label="Сетка фотографий">
+        <ul class="elements__list">
+          <li class="elements__item">
+            <img class="elements__image" src="./images/1_50.jpg" alt="Вид сверху на заснеженные горы.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Уральский урал ура</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+          <li class="elements__item">
+            <img class="elements__image" src="./images/2_50.jpg" alt="Пейзаж гор и облачного неба.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Кавказ</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+          <li class="elements__item">
+            <img class="elements__image" src="./images/3_50.jpg" alt="Пальма на фоне голубого неба.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Сочи</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+          <li class="elements__item">
+            <img class="elements__image" src="./images/4_50.jpg" alt="Силуэт человека на озере в лесу.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Озеро</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+          <li class="elements__item">
+            <img class="elements__image" src="./images/5_50.jpg" alt="Чёрная бабочка крупным планом на цветке сирени.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Сирень</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+          <li class="elements__item">
+            <img class="elements__image" src="./images/6_50.jpg" alt="Зёленые ветки ели крупным планом.">
+            <div class="elements__bottom-block">
+              <h2 class="elements__text">Сибирская ель</h2>
+              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy;&nbsp;2022 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_name">
-        <input type="text" placeholder="Исследователь океана" class="popup__input popup__input_profession">
-        <button type="submit" class="popup__submit">Сохранить</button>
-      </fieldset>
-    </form>
-  </section>
-<script src="./scripts/index.js"></script>
-</body>
+        <form class="popup__content" name="EditForm" method="post">
+          <input
+            type="text"
+            placeholder="Имя"
+            name="name"
+            class="popup__input popup__input_type_name"
+            >
+          <input
+            type="text"
+            placeholder="О себе"
+            name="proffesion"
+            class="popup__input popup__input_type_profession"
+            >
+          <button type="submit" class="popup__submit" aria-label="Сохранить изменения">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>

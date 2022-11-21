@@ -4,11 +4,12 @@
   color: white;
   height: 50px;
   cursor: pointer;
-  margin: 48px 0 0;
+  margin: 0;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
   transition: .3s ease;
+  border: none;
 }
 
 @media screen and (max-width: 867px) {

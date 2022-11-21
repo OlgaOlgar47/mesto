@@ -3,9 +3,7 @@
   height: 50px;
   background-color: black;
   border: 2px solid white;
-  background-image: url(../../../images/Vector\ \(1\).png);
-  background-size: 22px;
-  background-repeat: no-repeat;
+  background: 22px no-repeat url(../../../images/Add-button.png);
   background-position: center;
   cursor: pointer;
   align-self: center;
