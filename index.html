@@ -14,59 +14,17 @@
     <main class="content page__content">
       <section class="profile content__profile">
         <div class="profile__card">
-          <img class="profile__avatar" src="./images/image_50.jpg" alt="Аватарка">
+          <img class="profile__avatar" src="./images/image_50.jpeg" alt="Аватарка">
           <div class="profile__profile-info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name">Fernando Morales</h1>
             <button class="profile__edit-button" type="button" aria-label="Редактирование данных"></button>
-            <p class="profile__profession">Исследователь океана</p>
+            <p class="profile__profession">i clouds</p>
           </div>
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить картинку"></button>
       </section>
       <section class="elements" aria-label="Сетка фотографий">
         <ul class="elements__list">
-          <li class="elements__item">
-            <img class="elements__image" src="./images/1_50.jpg" alt="Вид сверху на заснеженные горы.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Уральский урал ура</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__image" src="./images/2_50.jpg" alt="Пейзаж гор и облачного неба.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Кавказ</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__image" src="./images/3_50.jpg" alt="Пальма на фоне голубого неба.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Сочи</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__image" src="./images/4_50.jpg" alt="Силуэт человека на озере в лесу.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Озеро</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__image" src="./images/5_50.jpg" alt="Чёрная бабочка крупным планом на цветке сирени.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Сирень</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__image" src="./images/6_50.jpg" alt="Зёленые ветки ели крупным планом.">
-            <div class="elements__bottom-block">
-              <h2 class="elements__text">Сибирская ель</h2>
-              <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -94,6 +52,16 @@
         </form>
       </div>
     </div>
+    <template id="card-template">
+      <li class="elements__item">
+        <img class="elements__image" src="" alt=" ">
+        <button class="elements__trash" type="button"></button>
+        <div class="elements__bottom-block">
+          <h2 class="elements__text"></h2>
+          <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
