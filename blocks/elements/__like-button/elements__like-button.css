@@ -15,8 +15,3 @@
 .elements__like-button:hover {
   opacity: .5;
 }
-
-.elements__like-button:active {
-  background-image: url(../../../images/Heart-active.jpg);
-  opacity: 1;
-}
