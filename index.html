@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./scripts/index.js"></script>
   </head>
   <body class="page">
     <header class="header page__header">
@@ -37,12 +38,14 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__content popup__content_type_edit" name="EditForm" method="post">
           <input
+            required
             type="text"
             placeholder="Имя"
             name="name"
             class="popup__input popup__input_type_name"
             >
           <input
+            required
             type="text"
             placeholder="О себе"
             name="proffesion"
@@ -58,12 +61,14 @@
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__content popup__content_type_add" name="EditForm" method="post">
           <input
+            required
             type="text"
             placeholder="Название"
-            name="nameOfPlace"
+            name="placeName"
             class="popup__input popup__input_type_card-name"
             >
           <input
+            required
             type="url"
             placeholder="Ссылка на картинку"
             name="link"
@@ -90,7 +95,6 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/cards.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/cards.js"></script>    
   </body>
 </html>
