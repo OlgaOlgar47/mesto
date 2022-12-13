@@ -1,8 +1,8 @@
 .page__content {
     margin: 0 auto;
     width: calc(100% - 2*200px);
+    min-height: 70vh;
     margin-bottom: 67px;
-
 }
 
 @media screen and (max-width: 1125px) {

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./scripts/validation.js"></script>
+    <script defer src="./scripts/cards.js"></script>
     <script defer src="./scripts/index.js"></script>
   </head>
   <body class="page">
@@ -15,18 +17,29 @@
     <main class="content page__content">
       <section class="profile content__profile">
         <div class="profile__card">
-          <img class="profile__avatar" src="./images/image_50.jpg" alt="Аватарка">
+          <img
+            class="profile__avatar"
+            src="./images/image_50.jpg"
+            alt="Аватарка"
+          >
           <div class="profile__profile-info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button" aria-label="Редактирование данных"></button>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="Редактирование данных"
+            ></button>
             <p class="profile__profession">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button" type="button" aria-label="Добавить картинку"></button>
+        <button
+          class="profile__add-button"
+          type="button"
+          aria-label="Добавить картинку"
+        ></button>
       </section>
       <section class="elements" aria-label="Сетка фотографий">
-        <ul class="elements__list">
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -34,53 +47,105 @@
     </footer>
     <div class="popup popup_type_edit">
       <div class="popup__container">
-        <button class="popup__close popup__close_type_edit" type="button"></button>
+        <button
+          class="popup__close popup__close_type_edit"
+          type="button"
+        ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__content popup__content_type_edit" name="EditForm" method="post">
-          <input
-            required
-            type="text"
-            placeholder="Имя"
-            name="name"
-            class="popup__input popup__input_type_name"
+        <form
+          class="popup__form popup__form_type_edit"
+          name="EditForm"
+          method="post"
+          novalidate
+        >
+          <label>
+            <input
+              required
+              type="text"
+              minlength="2"
+              maxlength="40"
+              placeholder="Имя"
+              name="name"
+              id="name"
+              class="popup__input popup__input_type_name"
             >
-          <input
-            required
-            type="text"
-            placeholder="О себе"
-            name="proffesion"
-            class="popup__input popup__input_type_profession"
+            <span class="popup__error" id="name-error"></span>
+          </label>
+          <label>
+            <input
+              required
+              type="text"
+              minlength="2"
+              maxlength="200"
+              placeholder="О себе "
+              name="proffesion"
+              id="proffesion"
+              class="popup__input popup__input_type_profession"
             >
-          <button type="submit" class="popup__submit" aria-label="Сохранить изменения">Сохранить</button>
+            <span class="popup__error" id="proffesion-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="popup__submit"
+            aria-label="Сохранить изменения"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
     <div class="popup popup_type_add">
       <div class="popup__container">
-        <button class="popup__close popup__close_type_add" type="button"></button>
+        <button
+          class="popup__close popup__close_type_add"
+          type="button"
+        ></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__content popup__content_type_add" name="EditForm" method="post">
-          <input
-            required
-            type="text"
-            placeholder="Название"
-            name="placeName"
-            class="popup__input popup__input_type_card-name"
+        <form
+          class="popup__form popup__form_type_add"
+          name="EditForm"
+          method="post"
+          novalidate
+        >
+          <label>
+            <input
+              required
+              minlength="2"
+              maxlength="30"
+              type="text"
+              placeholder="Название"
+              id="placeName"
+              class="popup__input popup__input_type_card-name"
             >
-          <input
-            required
-            type="url"
-            placeholder="Ссылка на картинку"
-            name="link"
-            class="popup__input popup__input_type_card-link"
+            <span class="popup__error" id="placeName-error"></span>
+          </label>
+          <label>
+            <input
+              required
+              type="url"
+              placeholder="Ссылка на картинку"
+              id="link"
+              class="popup__input popup__input_type_card-link"
             >
-          <button type="submit" class="popup__submit" aria-label="Добавить картинку">Создать</button>
+            <span class="popup__error" id="link-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="popup__submit popup__submit_inactive"
+            aria-label="Добавить картинку"
+            disabled
+          >
+            Создать
+          </button>
         </form>
       </div>
     </div>
     <div class="popup popup_type_view-image">
       <figure class="popup__figure">
-        <button class="popup__close popup__close_type_view-image" type="button"></button>
+        <button
+          class="popup__close popup__close_type_view-image"
+          type="button"
+        ></button>
         <img class="popup__image" src="#" alt=" ">
         <figcaption class="popup__image-text"></figcaption>
       </figure>
@@ -91,10 +156,13 @@
         <button class="elements__trash" type="button"></button>
         <div class="elements__bottom-block">
           <h2 class="elements__text"></h2>
-          <button class="elements__like-button" type="button" aria-label="Мне нравится"></button>
+          <button
+            class="elements__like-button"
+            type="button"
+            aria-label="Мне нравится"
+          ></button>
         </div>
       </li>
     </template>
-    <script src="./scripts/cards.js"></script>    
   </body>
 </html>
