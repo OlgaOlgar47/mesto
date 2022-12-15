@@ -63,13 +63,14 @@ const handlerKeyUp = (e) => {
   if(e.key === 'Escape') {
     const openModal = document.querySelector('.popup_opened');
     closePopup(openModal);
-    };
+  };
 }
 
 const openPopup = function(item) {
   item.classList.add('popup_opened');
-  resetInputErrors(config);
+  resetInputErrors(item, config);
   document.addEventListener('keyup', handlerKeyUp);
+  item.addEventListener('click', closePopupByClickOverlay);
 }
 
 const openPopupEdit = function() {
@@ -89,6 +90,7 @@ const openPopupAdd = function() {
 const closePopup = function(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keyup', handlerKeyUp);
+  item.removeEventListener('click', closePopupByClickOverlay);
 }
 
 const closePopupEdit = function() {
@@ -103,24 +105,11 @@ const closePopupViewImage = function() {
   closePopup(popupViewImage);
 }
 
-const closeEditPopupByClickOnOverlay = function(evt) {
+const closePopupByClickOverlay = function(evt) {
   if(evt.target === evt.currentTarget) {
-    closePopup(popupEdit);
+    closePopup(evt.currentTarget);
   }
 }
-
-const closeAddPopupByClickOnOverlay = function(evt) {
-  if(evt.target === evt.currentTarget) {
-    closePopup(popupAdd);
-  }
-}
-
-const closePopupViewImageByClickOnOverlay = function(evt) {
-  if(evt.target === evt.currentTarget) {
-    closePopup(popupViewImage);
-  }
-}
-
 
 function formEditSubmitHandler (evt) {
   evt.preventDefault()
@@ -153,9 +142,6 @@ popupEditCloseButton.addEventListener('click', closePopupEdit);
 popupAddCloseButton.addEventListener('click', closePopupAdd);
 popupViewImageCloseButton.addEventListener('click', closePopupViewImage);
 
-popupEdit.addEventListener('click', closeEditPopupByClickOnOverlay);
-popupAdd.addEventListener('click', closeAddPopupByClickOnOverlay);
-popupViewImage.addEventListener('click', closePopupViewImageByClickOnOverlay);
 
 formEdit.addEventListener('submit', formEditSubmitHandler);
 formAdd.addEventListener('submit', formAddSubmitHandler);

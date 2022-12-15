@@ -1,14 +1,32 @@
+const showInputError = (error, input, config) => {
+  error.textContent = input.validationMessage;
+  error.classList.add(config.errorClass);
+  input.classList.add(config.inputErrorClass);
+}
+
+const hideInputError = (error, input, config) => {
+  error.textContent = "";
+  error.classList.remove(config.errorClass);
+  input.classList.remove(config.inputErrorClass);
+}
+
+const disableButton = (button, config) => {
+  button.classList.add(config.inactiveButtonClass);
+  button.disabled = true;
+}
+
+const enableButton = (button, config) => {
+  button.classList.remove(config.inactiveButtonClass);
+  button.disabled = false;
+}
+
 const checkInputValidity = (input, config) => {
   const error = document.querySelector(`#${input.id}-error`);
 
   if (input.validity.valid) {
-    error.textContent = "";
-    error.classList.remove(config.errorClass);
-    input.classList.remove(config.inputErrorClass);
+    hideInputError(error, input, config);
   } else {
-    error.textContent = input.validationMessage;
-    error.classList.add(config.errorClass);
-    input.classList.add(config.inputErrorClass);
+    showInputError(error, input, config);
   };
 };
 
@@ -17,14 +35,11 @@ const toggleButtonState = (inputs, button, config) => {
  const isFormValid = inputs.every((input) => input.validity.valid);
 
       if (isFormValid) {
-        button.classList.remove(config.inactiveButtonClass);
-        button.disabled = false;
+        enableButton(button, config);
       } else {
-        button.classList.add(config.inactiveButtonClass);
-        button.disabled = true;
+        disableButton(button, config);
       };
 }
-
 
 const enableValidation = (config) => {
   const {formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, ...restConfig} = config;
@@ -36,8 +51,7 @@ const enableValidation = (config) => {
 
     form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      button.classList.add(inactiveButtonClass);
-      button.disabled = true;
+      disableButton(button, config);
     });
 
       inputs.forEach((input) => {
@@ -51,25 +65,17 @@ const enableValidation = (config) => {
 }
 
 //функция которая будет сбрасывать ошибки с текущей формы, 
-//чтобы при закрытии невалидной формы ошибки не оставались красными
-const resetInputErrors = (config) => {
-  const forms = [...document.querySelectorAll(config.formSelector)];
-      forms.forEach((form) => {
-      const inputs = [...form.querySelectorAll(config.inputSelector)];
-        inputs.forEach((input) => {
-          checkInputValidity(input, config);
-        });
-});
+//чтобы после закрытия невалидной формы поля не оставались красными
+const resetInputErrors = (form, config) => {
+  const inputs = [...form.querySelectorAll(config.inputSelector)];
+  
+  inputs.forEach((input) => {
+    const error = document.querySelector(`#${input.id}-error`);
+    hideInputError(error, input, config);
+  });
 }
 
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_active'
-} 
+
 
 enableValidation(config);

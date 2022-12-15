@@ -3,7 +3,8 @@
   line-height: 15px;
   color: #FF0000;
   display: block;
+  visibility: hidden;
   box-sizing: border-box;
   margin: 5px 0 0;
-  min-height: 25px;
+  min-height: 30px;
 }
