@@ -36,11 +36,11 @@ export class FormValidator {
   _toggleButtonState = () => {
     const isFormValid = this._inputs.every((input) => input.validity.valid);
  
-     if (isFormValid) {
-       this._enableButton();
-     } else {
-       this._disableButton();
-     };
+    if (isFormValid) {
+      this._enableButton();
+    } else {
+      this._disableButton();
+    };
    }
 
   _checkInputValidity = (input) => {
@@ -55,33 +55,27 @@ export class FormValidator {
   
 
   enableValidation = () => {
-    const forms = [...this._formElement.querySelectorAll(this._formSelector)];
-
+    const forms = [...document.querySelectorAll(this._formSelector)];
     forms.forEach((form) => {
-
       form.addEventListener("submit", (evt) => {
         evt.preventDefault();
-        this._toggleButtonState();
+        this._disableButton();
       });
-
         this._inputs.forEach((input) => {
           input.addEventListener("input", () => {
             this._checkInputValidity(input);
             this._toggleButtonState();
-
+          });
         });
     });
-  });
   }
 
 //функция которая будет сбрасывать ошибки с текущей формы, 
 //чтобы после закрытия невалидной формы поля не оставались красными
-resetInputErrors = () => {
-  
-  
-  this._inputs.forEach((input) => {
-    const error = this._formElement.querySelector(`#${input.id}-error`);
-    this._hideInputError(error, input);
-  });
-}
+  resetInputErrors = () => { 
+    this._inputs.forEach((input) => {
+      const error = this._formElement.querySelector(`#${input.id}-error`);
+      this._hideInputError(error, input);
+    });
+  }
 }
