@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Atlantic clouds',
     link: './images/Atlantic_clouds.jpeg'
@@ -25,7 +25,7 @@ const initialCards = [
   }
 ];
 
-const config = {
+export const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -33,3 +33,5 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active'
 } 
+
+export const templateSelector = '#card-template';
