@@ -84,16 +84,16 @@ const openPopup = function(item) {
 
 const openPopupEdit = function() {
   //при повторном открытии после сохранения кнопка будет активна
-  const submitButton = formEdit.querySelector('.popup__submit');
-  submitButton.classList.remove('popup__submit_inactive');
-  submitButton.disabled = false;
+  validationEditForm.enableButton();
+  //для предотвращения вывода ошибки при повторном открытии, после закрытия невалидной форнмы
+  validationEditForm.resetInputErrors(formEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileProfession.textContent;
-  validationEditForm.resetInputErrors(formEdit);
   openPopup(popupEdit);
 }
 
 const openPopupAdd = function() {
+
   openPopup(popupAdd);
 }
 

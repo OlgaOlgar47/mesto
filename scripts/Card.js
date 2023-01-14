@@ -41,6 +41,7 @@ export class Card {
     //удаление картинки
     this._element.querySelector('.elements__trash').addEventListener('click', () => {
       this._element.remove();
+      this._element = null;
     });
     //лайк
     this._element.querySelector('.elements__like-button').addEventListener('click', (evt) => {

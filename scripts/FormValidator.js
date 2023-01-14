@@ -27,8 +27,8 @@ export class FormValidator {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
-
-  _enableButton = () => {
+  //публичный метод для использования в общем коде, в функции openPopupEdit
+  enableButton = () => {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
   }
@@ -37,7 +37,7 @@ export class FormValidator {
     const isFormValid = this._inputs.every((input) => input.validity.valid);
  
     if (isFormValid) {
-      this._enableButton();
+      this.enableButton();
     } else {
       this._disableButton();
     };
@@ -54,28 +54,29 @@ export class FormValidator {
   }
   
 
-  enableValidation = () => {
-    const forms = [...document.querySelectorAll(this._formSelector)];
-    forms.forEach((form) => {
-      form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-        this._disableButton();
-      });
-        this._inputs.forEach((input) => {
-          input.addEventListener("input", () => {
-            this._checkInputValidity(input);
-            this._toggleButtonState();
-          });
-        });
+  _setEventListeners = () => {
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._disableButton();
     });
+      this._inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+          this._checkInputValidity(input);
+          this._toggleButtonState();
+        });
+      });
   }
 
-//функция которая будет сбрасывать ошибки с текущей формы, 
-//чтобы после закрытия невалидной формы поля не оставались красными
+  //функция которая будет сбрасывать ошибки с текущей формы, 
+  //чтобы после закрытия невалидной формы поля не оставались красными
   resetInputErrors = () => { 
     this._inputs.forEach((input) => {
       const error = this._formElement.querySelector(`#${input.id}-error`);
       this._hideInputError(error, input);
     });
   }
+
+  enableValidation = () => {
+    this._setEventListeners();
+  };
 }
