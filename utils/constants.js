@@ -35,3 +35,4 @@ export const config = {
 } 
 
 export const templateSelector = '#card-template';
+export const containerSelector = '.elements__list';

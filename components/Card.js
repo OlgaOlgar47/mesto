@@ -1,9 +1,9 @@
 export class Card {
-  constructor(data, templateSelector, handleOpenPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleOpenPopup = handleOpenPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -36,7 +36,7 @@ export class Card {
   _setEventListeners() {
     //слушатель клика на картинку
     this._elementImage.addEventListener('click', () => {
-    this._handleOpenPopup(this._name,this._link);
+    this._handleCardClick(this._name, this._link);
     });
     //удаление картинки
     this._element.querySelector('.elements__trash').addEventListener('click', () => {
