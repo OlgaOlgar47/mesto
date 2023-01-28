@@ -1,9 +1,9 @@
-const AtlanticClouds = new URL('../images/Atlantic_clouds.jpeg', import.meta.url);
-const CloudyStorm = new URL('../images/Cloudy_storm.jpeg', import.meta.url);
-const CloudyDrops = new URL( '../images/Cloudy_drops.jpeg', import.meta.url);
-const MediterranianClouds = new URL('../images/Mediterranian_clouds.jpeg', import.meta.url);
-const UnPocoClouds = new URL('../images/Un_poco_clouds.jpeg', import.meta.url);
-const CloudsRosados = new URL('../images/Clouds_rosados.jpeg', import.meta.url);
+const AtlanticClouds = new URL('../images/atlantic_clouds.jpeg', import.meta.url);
+const CloudyStorm = new URL('../images/cloudy_storm.jpeg', import.meta.url);
+const CloudyDrops = new URL( '../images/cloudy_drops.jpeg', import.meta.url);
+const MediterranianClouds = new URL('../images/mediterranian_clouds.jpeg', import.meta.url);
+const UnPocoClouds = new URL('../images/un_poco_clouds.jpeg', import.meta.url);
+const CloudsRosados = new URL('../images/clouds_rosados.jpeg', import.meta.url);
 
 export const initialCards = [
   {

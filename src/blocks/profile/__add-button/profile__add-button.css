@@ -3,7 +3,7 @@
   height: 50px;
   background-color: black;
   border: 2px solid white;
-  background: 22px no-repeat url(../../../images/Add-button.png);
+  background: 22px no-repeat url(../../../images/add-button.png);
   background-position: center;
   cursor: pointer;
   align-self: center;
@@ -11,11 +11,11 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .profile__add-button {
+  .profile__add-button {
     min-width: 282px;
     margin: 36px 0 36px;
     background-size: 16px;
-    }
+  }
 }
 
 .profile__add-button:hover {
