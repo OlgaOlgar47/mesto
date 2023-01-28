@@ -9,7 +9,6 @@ import { UserInfo } from '../components/UserInfo.js';
 import './index.css';
 
 
-
 const popupEditOpenButton = document.querySelector('.profile__edit-button');
 const popupAddOpenButton = document.querySelector('.profile__add-button');
 
