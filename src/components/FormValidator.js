@@ -22,12 +22,12 @@ export class FormValidator {
     error.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
   }
-
-  _disableButton = () => {
+ //публичный метод для использования в общем коде, в функции открытия попапа Add
+  disableButton = () => {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
-  //публичный метод для использования в общем коде, в функции openPopupEdit
+  //публичный метод для использования в общем коде, в функции открытия попапа Edit
   enableButton = () => {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
@@ -39,7 +39,7 @@ export class FormValidator {
     if (isFormValid) {
       this.enableButton();
     } else {
-      this._disableButton();
+      this.disableButton();
     };
    }
 
@@ -55,9 +55,8 @@ export class FormValidator {
   
 
   _setEventListeners = () => {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._disableButton();
+    this._formElement.addEventListener("submit", () => {
+      this.disableButton();
     });
       this._inputs.forEach((input) => {
         input.addEventListener("input", () => {

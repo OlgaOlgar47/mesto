@@ -25,15 +25,21 @@ validationEditForm.enableValidation();
 const validationAddForm = new FormValidator(config, formAdd);
 validationAddForm.enableValidation();
 
-const handleCardClick = (name, link) => {
-  const popupWithImage = new PopupWithImage('.popup_type_view-image');
-  popupWithImage.open(name, link);
-  popupWithImage.setEventListeners();
+const popupWithImage = new PopupWithImage('.popup_type_view-image');
+popupWithImage.setEventListeners();
+
+const handleCardClick = (name, link) => { 
+  popupWithImage.open(name, link); 
 }
 
-const cardList = new Section({items: initialCards, renderer: (item) => {
-  const card = new Card(item, templateSelector, handleCardClick);
+const createCard = (data) => {
+  const card = new Card(data, templateSelector, handleCardClick);
   const cardElement = card.generateCard();
+  return cardElement;
+}
+
+const cardList = new Section({items: initialCards, renderer: (data) => {
+  const cardElement = createCard(data);
   cardList.setItem(cardElement);
   }
 }, containerSelector)
@@ -42,12 +48,12 @@ cardList.renderItems();
 
 const userInfo = new UserInfo ({name: '.profile__name', about: '.profile__profession'});
 
-const handlerEditSubmitForm = (data) => {
+const handleEditSubmitForm = (data) => {
   userInfo.setUserInfo(data);
   popupEdit.close();
 }
 
-const popupEdit = new PopupWithForm('.popup_type_edit', handlerEditSubmitForm);
+const popupEdit = new PopupWithForm('.popup_type_edit', handleEditSubmitForm);
 popupEdit.setEventListeners();
 
 popupEditOpenButton.addEventListener('click', () => {
@@ -62,7 +68,7 @@ popupEditOpenButton.addEventListener('click', () => {
   popupEdit.open();
 })
 
-const handlerAddSumbitForm = () => {
+const handleAddSumbitForm = () => {
   //собираем данные с инпутов
   const newCardData = {
     name: inputCardName.value,
@@ -76,9 +82,10 @@ const handlerAddSumbitForm = () => {
   popupAdd.close();
 }
 
-const popupAdd = new PopupWithForm('.popup_type_add', handlerAddSumbitForm);
+const popupAdd = new PopupWithForm('.popup_type_add', handleAddSumbitForm);
 popupAdd.setEventListeners();
 
 popupAddOpenButton.addEventListener('click', () => {
+  validationAddForm.disableButton();
   popupAdd.open();
 })
