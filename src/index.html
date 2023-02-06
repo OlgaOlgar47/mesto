@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header page__header">
-      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип Место">
+      <img
+        class="header__logo"
+        src="<%=require('./images/logo.svg')%>"
+        alt="логотип Место"
+      />
     </header>
     <main class="content page__content">
       <section class="profile content__profile">
         <div class="profile__card">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/image_50.jpg')%>"
-            alt="Аватарка"
-          >
+          <img class="profile__avatar" src="" alt="Аватарка" />
           <div class="profile__profile-info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button
               class="profile__edit-button"
               type="button"
@@ -43,10 +43,7 @@
     </footer>
     <div class="popup popup_type_edit">
       <div class="popup__container">
-        <button
-          class="popup__close popup__close_type_edit"
-          type="button"
-        ></button>
+        <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form
           class="popup__form popup__form_type_edit"
@@ -64,7 +61,7 @@
               name="name"
               id="name"
               class="popup__input popup__input_type_name"
-            >
+            />
             <span class="popup__error" id="name-error"></span>
           </label>
           <label>
@@ -77,7 +74,7 @@
               name="about"
               id="proffesion"
               class="popup__input popup__input_type_profession"
-            >
+            />
             <span class="popup__error" id="proffesion-error"></span>
           </label>
           <button
@@ -92,10 +89,7 @@
     </div>
     <div class="popup popup_type_add">
       <div class="popup__container">
-        <button
-          class="popup__close popup__close_type_add"
-          type="button"
-        ></button>
+        <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form
           class="popup__form popup__form_type_add"
@@ -110,10 +104,11 @@
               maxlength="30"
               type="text"
               placeholder="Название"
-              name="name";
+              name="name"
+              ;
               id="placeName"
               class="popup__input popup__input_type_card-name"
-            >
+            />
             <span class="popup__error" id="placeName-error"></span>
           </label>
           <label>
@@ -124,7 +119,7 @@
               name="link"
               id="link"
               class="popup__input popup__input_type_card-link"
-            >
+            />
             <span class="popup__error" id="link-error"></span>
           </label>
           <button
@@ -140,25 +135,36 @@
     </div>
     <div class="popup popup_type_view-image">
       <figure class="popup__figure">
-        <button
-          class="popup__close popup__close_type_view-image"
-          type="button"
-        ></button>
-        <img class="popup__image" src="#" alt=" ">
+        <button class="popup__close" type="button"></button>
+        <img class="popup__image" src="#" alt=" " />
         <figcaption class="popup__image-text"></figcaption>
       </figure>
     </div>
+    <div class="popup popup_type_confirm">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form">
+          <h2 class="popup__title popup__title_type_confirm">Вы уверены?</h2>
+          <button type="submit" class="popup__submit" aria-label="Да уверен">
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
     <template id="card-template">
       <li class="elements__item">
-        <img class="elements__image" src="#" alt=" ">
+        <img class="elements__image" src="#" alt=" " />
         <button class="elements__trash" type="button"></button>
         <div class="elements__bottom-block">
           <h2 class="elements__text"></h2>
-          <button
-            class="elements__like-button"
-            type="button"
-            aria-label="Мне нравится"
-          ></button>
+          <div class="elements__like-container">
+            <button
+              class="elements__like-button"
+              type="button"
+              aria-label="Мне нравится"
+            ></button>
+            <p class="elements__number-of-likes">0</p>
+          </div>
         </div>
       </li>
     </template>
