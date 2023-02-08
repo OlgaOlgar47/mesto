@@ -10,7 +10,7 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
-    this._userId = userId;
+    this._userId = userId.userId;
     this._ownerId = data.owner._id;
     this._likes = data.likes;
     this._templateSelector = templateSelector;
@@ -29,23 +29,32 @@ export class Card {
   }
 
   _removeDeleteButton = () => {
-    if (this._ownerId === this._userId.userId) {
+    if (this._ownerId === this._userId) {
       this._buttonDelete.style.visibility = "visible";
     } else {
       this._buttonDelete.style.visibility = "hidden";
     }
   };
 
+  _putLike = () => {
+    this._buttonLike.classList.toggle("elements__like-button_active");
+  };
+
   setLikes(likes) {
-    console.log("setlikes");
     this._likes = likes;
     this._numberOfLikes.textContent = this._likes.length;
-    this._buttonLike.classList.toggle("elements__like-button_active");
+    this._putLike();
   }
 
-  checkIfIsLikedByMe = () => {
+  isLikedByMe = () => {
     const isLikedByMe = this._likes.some((like) => like._id === this._userId);
     return isLikedByMe;
+  };
+
+  _checkIfIsLikedByMe = () => {
+    if (this.isLikedByMe()) {
+      this._putLike();
+    }
   };
 
   generateCard() {
@@ -63,10 +72,8 @@ export class Card {
     this._elementName.textContent = this._name;
     this._numberOfLikes.textContent = this._likes.length;
 
-    //console.log(this._ownerId)
-    //console.log(this._userId)
     this._removeDeleteButton();
-    // this._checkIfIsLikedByMe();
+    this._checkIfIsLikedByMe();
     this._setEventListeners();
     return this._element;
   }
@@ -87,7 +94,7 @@ export class Card {
     );
     //лайк
     this._buttonLike.addEventListener("click", () =>
-      this._handleLikeClick(this._id, this._likes)
+      this._handleLikeClick(this._id)
     );
   }
 }

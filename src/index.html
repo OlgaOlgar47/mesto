@@ -17,7 +17,17 @@
     <main class="content page__content">
       <section class="profile content__profile">
         <div class="profile__card">
-          <img class="profile__avatar" src="" alt="Аватарка" />
+          <button
+            class="profile__editAvatar-button"
+            type="button"
+            aria-label="Изменить аватар"
+          >
+            <img
+              class="profile__avatar"
+              src="https://i.gifer.com/yH.gif"
+              alt="Аватарка"
+            />
+          </button>
           <div class="profile__profile-info">
             <h1 class="profile__name"></h1>
             <button
@@ -25,7 +35,7 @@
               type="button"
               aria-label="Редактирование данных"
             ></button>
-            <p class="profile__profession">Исследователь океана</p>
+            <p class="profile__profession">Джон Траволта</p>
           </div>
         </div>
         <button
@@ -147,6 +157,29 @@
           <h2 class="popup__title popup__title_type_confirm">Вы уверены?</h2>
           <button type="submit" class="popup__submit" aria-label="Да уверен">
             Да
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_updateAvatar">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form popup__form_type_edit-avatar">
+          <label>
+            <input
+              required
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="avatar"
+              id="avatar"
+              class="popup__input popup__input_type_avatar"
+            />
+            <span class="popup__error" id="avatar-error"></span>
+          </label>
+          <button type="submit" class="popup__submit" aria-label="Сохранить">
+            Сохранить
           </button>
         </form>
       </div>
