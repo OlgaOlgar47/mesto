@@ -8,6 +8,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Api } from "../components/Api.js";
 import "./index.css";
@@ -52,27 +53,29 @@ const userInfo = new UserInfo({
   avatar: ".profile__avatar",
 });
 
+const popupWitnConfirmation = new PopupWithConfirmation(".popup_type_confirm");
+popupWitnConfirmation.setEventListeners();
+
+let userId;
 const createCard = (data) => {
   const card = new Card(
     data,
-    { userId: userInfo.id },
+    userId,
     templateSelector,
     handleCardClick,
     {
-      handleDeleteClick: () => {
-        const popupConfirm = new PopupWithForm(".popup_type_confirm", {
-          handleConfirm: (id) => {
-            api
-              .deleteCard(id)
-              .then((res) => {
-                card.removeCard();
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          },
+      handleDeleteClick: (id) => {
+        popupWitnConfirmation.setSubmitCallback(() => {
+          api
+            .deleteCard(id)
+            .then((res) => {
+              card.removeCard();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
-        popupConfirm.open();
+        popupWitnConfirmation.open();
       },
     },
     {
@@ -116,7 +119,7 @@ const cardList = new Section(
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, initialCards]) => {
-    userInfo.id = userData._id;
+    userId = userData._id;
     userInfo.setUserInfo(userData);
     cardList.renderItems(initialCards);
   })
@@ -133,20 +136,16 @@ const handleEditSubmitForm = (values) => {
     .editUserData(values)
     .then((res) => {
       userInfo.setUserInfo(res);
-      // уведомляю об успехе текстом на кнопке "Выполнено!"
-      popupEdit.setButtonText("Выполнено!");
+      popupEdit.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      // в таймауте 1,5 сек разблокирую кнопку, меняю текст обратно
-      setTimeout(() => {
-        validationAddForm.enableButton();
-        popupAdd.setButtonText("Создать");
-      }, 1500);
+      //разблокирую кнопку, меняю текст обратно
+      validationAddForm.enableButton();
+      popupAdd.setButtonText("Создать");
     });
-  popupEdit.close();
 };
 
 const popupEdit = new PopupWithForm(".popup_type_edit", handleEditSubmitForm);
@@ -172,18 +171,15 @@ const handleAddSumbitForm = (values) => {
     .then((res) => {
       const cardElement = createCard(res);
       cardList.setItem(cardElement);
-      popupAdd.setButtonText("Выполнено!");
+      popupAdd.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      setTimeout(() => {
-        validationAddForm.enableButton();
-        popupAdd.setButtonText("Создать");
-      }, 1500);
+      validationAddForm.enableButton();
+      popupAdd.setButtonText("Создать");
     });
-  popupAdd.close();
 };
 
 const popupAdd = new PopupWithForm(".popup_type_add", handleAddSumbitForm);
@@ -195,24 +191,20 @@ popupAddOpenButton.addEventListener("click", () => {
 });
 
 const handleEditAvatarForm = (link) => {
-  popupEdit.setButtonText("Сохранение...");
+  popupEditAvatar.setButtonText("Сохранение...");
   api
     .changeAvatar(link)
     .then((res) => {
       userInfo.changeAvatar(res.avatar);
-      popupEdit.setButtonText("Выполнено!");
+      popupEditAvatar.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      // в таймауте 1,5 сек разблокирую кнопку, меняю текст обратно
-      setTimeout(() => {
-        validationAddForm.enableButton();
-        popupAdd.setButtonText("Создать");
-      }, 1500);
+      validationAddForm.enableButton();
+      popupAdd.setButtonText("Создать");
     });
-  popupEditAvatar.close();
 };
 
 const popupEditAvatar = new PopupWithForm(
@@ -222,5 +214,6 @@ const popupEditAvatar = new PopupWithForm(
 popupEditAvatar.setEventListeners();
 
 popupEditAvatarOpenButon.addEventListener("click", () => {
+  validatiomEditAvatarForm.disableButton();
   popupEditAvatar.open();
 });

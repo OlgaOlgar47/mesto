@@ -51,15 +51,11 @@ export class FormValidator {
     if (input.validity.valid) {
       this._hideInputError(error, input);
     } else {
-      //console.log(error);
       this._showInputError(error, input);
     }
   };
 
   _setEventListeners = () => {
-    this._formElement.addEventListener("submit", () => {
-      this.disableButton();
-    });
     this._inputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
