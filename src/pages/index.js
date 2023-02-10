@@ -70,6 +70,7 @@ const createCard = (data) => {
             .deleteCard(id)
             .then((res) => {
               card.removeCard();
+              popupWitnConfirmation.close();
             })
             .catch((err) => {
               console.log(err);
@@ -192,6 +193,7 @@ popupAddOpenButton.addEventListener("click", () => {
 
 const handleEditAvatarForm = (link) => {
   popupEditAvatar.setButtonText("Сохранение...");
+  validatiomEditAvatarForm.disableButton();
   api
     .changeAvatar(link)
     .then((res) => {
@@ -202,8 +204,8 @@ const handleEditAvatarForm = (link) => {
       console.log(err);
     })
     .finally(() => {
-      validationAddForm.enableButton();
-      popupAdd.setButtonText("Создать");
+      validatiomEditAvatarForm.enableButton();
+      popupEditAvatar.setButtonText("Создать");
     });
 };
 
